@@ -24,8 +24,8 @@
 			margin-top: 20px;
 			margin-bottom: 20px;
 		}
-		a {
-			background-color: gray;
+		div#links a {
+			background-color: #666666;
 			border-radius: 10px;
 			color: whiteSmoke;
 			padding: 10px;
@@ -33,11 +33,35 @@
 			transition-property: background-color;
 			transition-duration: 0.5s;
 		}
-		a:hover {
+		div#links a:hover {
 			background-color: cadetBlue;
 		}
-		p#manual {
-
+		div#manual {
+			background-color: whiteSmoke;
+		}
+		h2#manualTitle {
+			color: black;
+			font-weight: lighter;
+			padding: 10px;
+		}
+		h2 {
+			color: #666666;
+		}
+		blockquote {
+			background-color: white;
+			border-color: gray;
+			border-radius: 5px;
+			border-style: solid;
+			border-width: 1px;
+			margin: 0 auto;
+			padding-left: 20px;
+			padding-right: 20px;
+			text-align: left;
+			width: 500px;
+		}
+		li {
+			margin-top: 10px;
+			margin-bottom: 10px;
 		}
 	</style>
 </head>
@@ -47,6 +71,72 @@
 	<div id="links">
 		<a href="LDMClient.zip" type="application/zip">下载安装包</a>
 	</div>
-	<p id="manual">用户手册正在制作中，敬请期待</p>
+	<div id="manual">
+		<h2 id="manualTitle">用户手册</h2>
+		<h2>安装</h2>
+		<blockquote>
+			<ol>
+				<li>点击“<a href="LDMClient.zip" type="application/zip">下载安装包</a>”链接下载文件</li>
+				<li>打开下载好的文件，进入publish文件夹，运行setup.exe</li>
+				<li>按照提示安装</li>
+			</ol>
+		</blockquote>
+		<h2>运行</h2>
+		<blockquote>
+			<ol>
+				<li>将COM转USB连接线分别接入笔记本和测距仪</li>
+				<li>Windows 7系统：开始 -> 所有程序 -> SGIDI -> 测距仪客户端</li>
+				<li>首先在下拉列表里选择端口号。不知道端口号？看<a href="#port">这里</a></li>
+				<li>然后根据实际需求点击“<a href="#test">调试</a>”或者“<a href="#collect">采集</a>”按钮</li>
+			</ol>
+		</blockquote>
+		<h2 id="port">如何确定端口号</h2>
+		<blockquote>
+			<ol>
+				<li>Windows 7系统：开始 -> 控制面板 -> 设备管理器</li>
+				<li>在列表里找到并展开“端口”就能看到端口号，例如COM3</li>
+			</ol>
+		</blockquote>
+		<h2 id="test">调试</h2>
+		<blockquote>
+			<ol>
+				<li>选择好端口号后，点击“调试”按钮</li>
+				<li>输入测距仪编号</li>
+				<li>点击“测量”按钮，等待大约3秒，就能看到结果</li>
+				<li>点击“打开激光”按钮，等待大约3秒，测距仪进入激光状态</li>
+				<li>点击“关闭激光”按钮，退出激光状态</li>
+				<li>关闭此窗口就可回到初始界面</li>
+			</ol>
+		</blockquote>
+		<h2 id="collect">采集</h2>
+		<blockquote>
+			<ol>
+				<li>选择好端口号后，点击“调试”按钮</li>
+				<li>首先点击“读取点号”按钮，选择点号文件，等待程序读取。读取成功时会显示已读取的点数。参看<a href="#format1">点号文件格式</a></li>
+				<li>然后点击“开始采集”按钮，程序开始不断地测量，最近一次测量结果会显示在界面上</li>
+				<li>点击“停止采集”按钮即可停止测量</li>
+				<li>点击“保存”按钮将本轮测量的结果保存到文件中。文件名默认是当前时间，例如201412221106.txt。参看<a href="#format2">结果文件格式</a></li>
+				<li>关闭此窗口就可回到初始界面</li>
+			</ol>
+		</blockquote>
+		<h2 id="format1">点号文件格式</h2>
+		<blockquote>
+			<p>点号文件应为文本文件，每一行代表一个点，包含两个数据，第一个是点名，第二个是对应的测距仪编号；这两个数据之间用英文逗号分隔</p>
+			<p>例如</p>
+			<pre>
+60环,20
+72环,22
+			</pre>
+		</blockquote>
+		<h2 id="format2">结果文件格式</h2>
+		<blockquote>
+			<p>结果文件为文本文件，每一行代表一次测量结果，包含两个数据，第一个是点名，第二个是距离，单位为米；这两个数据之间用英文逗号分隔</p>
+			<p>例如</p>
+			<pre>
+60环,2.848
+72环,2.850
+			</pre>
+		</blockquote>
+	</div>
 </body>
 </html>
